@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CocoSync - 实时文件夹同步工具</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="theme-toggle" id="theme-toggle" title="切换主题">
+    <svg id="theme-toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12,18c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S15.3,18,12,18zM12,8c-2.2,0-4,1.8-4,4c0,2.2,1.8,4,4,4c2.2,0,4-1.8,4-4C16,9.8,14.2,8,12,8z"/>
+      <path d="M12,4c-0.6,0-1-0.4-1-1V1c0-0.6,0.4-1,1-1s1,0.4,1,1v2C13,3.6,12.6,4,12,4z"/>
+      <path d="M12,24c-0.6,0-1-0.4-1-1v-2c0-0.6,0.4-1,1-1s1,0.4,1,1v2C13,23.6,12.6,24,12,24z"/>
+      <path d="M5.6,6.6c-0.3,0-0.5-0.1-0.7-0.3L3.5,4.9c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4C6.2,6.5,5.9,6.6,5.6,6.6z"/>
+      <path d="M19.8,20.8c-0.3,0-0.5-0.1-0.7-0.3l-1.4-1.4c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l1.4,1.4c0.4,0.4,0.4,1,0,1.4C20.3,20.7,20,20.8,19.8,20.8z"/>
+      <path d="M3,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h2c0.6,0,1,0.4,1,1S3.6,13,3,13z"/>
+      <path d="M23,13h-2c-0.6,0-1-0.4-1-1s0.4-1,1-1h2c0.6,0,1,0.4,1,1S23.6,13,23,13z"/>
+      <path d="M4.2,20.8c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l1.4-1.4c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l-1.4,1.4C4.7,20.7,4.5,20.8,4.2,20.8z"/>
+      <path d="M18.4,6.6c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l1.4-1.4c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l-1.4,1.4C18.9,6.5,18.6,6.6,18.4,6.6z"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>CocoSync</h1>
+      <p>实时文件夹同步工具</p>
+    </header>
+
+    <main>
+      <section class="sync-config">
+        <h2>同步配置</h2>
+        <form id="sync-form">
+          <div class="form-group">
+            <label for="source-path">源文件夹:</label>
+            <div class="path-input">
+              <input type="text" id="source-path" readonly placeholder="请选择源文件夹">
+              <button type="button" id="select-source">选择文件夹</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="target-path">目标文件夹:</label>
+            <div class="path-input">
+              <input type="text" id="target-path" readonly placeholder="请选择目标文件夹">
+              <button type="button" id="select-target">选择文件夹</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sync-mode">同步模式:</label>
+            <select id="sync-mode">
+              <option value="mirror">镜像模式 (完全同步)</option>
+              <option value="increment">增量模式 (仅添加新文件)</option>
+              <option value="delta">差异模式 (支持增量传输)</option>
+            </select>
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="delta-transfer">
+            <label for="delta-transfer">启用增量传输 (仅传输文件变化部分)</label>
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="version-control">
+            <label for="version-control">启用历史版本保留</label>
+          </div>
+
+          <div class="form-group">
+            <label for="max-versions">最大保留版本数:</label>
+            <input type="number" id="max-versions" value="5" min="1">
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="delete-mode" checked>
+            <label for="delete-mode">同步删除操作</label>
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="include-hidden">
+            <label for="include-hidden">包含隐藏文件</label>
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="follow-symlinks">
+            <label for="follow-symlinks">跟踪符号链接</label>
+          </div>
+
+          <div class="form-group">
+            <label for="max-file-size">最大文件大小 (MB):</label>
+            <input type="number" id="max-file-size" value="0" min="0">
+            <span class="hint">0 表示无限制</span>
+          </div>
+
+          <div class="form-group">
+            <label for="conflict-resolution">冲突解决策略:</label>
+            <select id="conflict-resolution">
+              <option value="overwrite">覆盖 (使用源文件)</option>
+              <option value="rename">重命名 (保留两者)</option>
+              <option value="skip">跳过 (保留目标文件)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="filters">过滤规则:</label>
+            <textarea id="filters" placeholder="每行一个规则，例如: *.tmp, *.bak"></textarea>
+            <span class="hint">支持 glob 模式，每行一个规则</span>
+          </div>
+
+          <div class="button-group">
+            <button type="button" id="save-config">保存配置</button>
+            <button type="button" id="start-sync" class="primary">开始同步</button>
+            <button type="button" id="stop-sync" disabled>停止同步</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="sync-status">
+        <h2>同步状态</h2>
+        <div class="status-indicator">
+          <div id="status-icon" class="status-icon stopped"></div>
+          <div id="status-text">未开始同步</div>
+        </div>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-label">已同步文件:</span>
+            <span id="synced-files" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">已处理冲突:</span>
+            <span id="conflicts" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">上次同步:</span>
+            <span id="last-sync" class="stat-value">-</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sync-logs">
+        <h2>同步日志</h2>
+        <div class="log-container">
+          <div id="log-entries" class="log-entries"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>CocoSync &copy; 2023</p>
+    </footer>
+  </div>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
