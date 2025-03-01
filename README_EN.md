@@ -21,45 +21,43 @@ CocoSync features a modern interface design that's simple and intuitive, making 
 
 ### 🔍 Basic Features
 
-- **Real-time Synchronization** - Automatically detects file changes and syncs immediately, never missing any modifications
-- **Multiple Sync Modes** - Supports mirror mode, incremental mode, and delta mode
-- **File Filtering** - Set rules to exclude files you don't want to synchronize
-- **Conflict Resolution** - Intelligently resolves file conflicts with multiple resolution strategies
-- **Visual Interface** - Beautiful and intuitive user interface, easy to operate
-- **Real-time Logs** - Detailed records of all synchronization operations at a glance
+- **Real-time Synchronization** 🔄 - Automatically detects file changes and syncs immediately, never missing any modifications
+- **Multiple Sync Modes** 🌈 - Supports mirror mode, incremental mode, and delta mode
+- **File Filtering** 🧩 - Set rules to exclude files you don't want to synchronize
+- **Conflict Resolution** 🛡️ - Intelligently resolves file conflicts with multiple resolution strategies
+- **Visual Interface** 🎨 - Beautiful and intuitive user interface, easy to operate
+- **Real-time Logs** 📝 - Detailed records of all synchronization operations at a glance
 
 ### 🚀 Advanced Features
 
-- **Delta Transfer** - Only transfers the changed parts of files, saving bandwidth and time
-- **Version Control** - Preserves historical versions of files, allowing you to roll back at any time
-- **Dark Mode** - Protects your eyes and provides a comfortable night-time experience
-- **Custom Filter Rules** - Flexibly set filter rules using glob patterns
+- **Delta Transfer** ⚡ - Only transfers the changed parts of files, saving bandwidth and time
+- **Version Control** 📚 - Preserves historical versions of files, allowing you to roll back at any time
+- **Dark Mode** 🌙 - Protects your eyes and provides a comfortable night-time experience
+- **Custom Filter Rules** 🔍 - Flexibly set filter rules using glob patterns
 
 ## 🔧 Installation Guide
 
 ### System Requirements
 
-- Windows 10/11
-- macOS 10.13 or higher
-- Linux (mainstream distributions)
+- Windows 10/11 🪟
 
 ### Download and Install
 
-1. Download the latest version from the [Releases page](https://github.com/yourusername/coco-sync/releases)
-2. Run the installer and follow the prompts to complete installation
-3. Launch CocoSync and start enjoying the convenient file synchronization experience!
+1. Download the latest version from the [Releases page](https://github.com/yourusername/coco-sync/releases) 📥
+2. Run the installer and follow the prompts to complete installation ⚙️
+3. Launch CocoSync and start enjoying the convenient file synchronization experience! 🎉
 
 ## 📖 User Guide
 
 ### Quick Start
 
-1. **Set Source Folder** - Click the "Select Folder" button and choose the source folder you want to synchronize
-2. **Set Target Folder** - Choose the destination location for file synchronization
-3. **Choose Sync Mode** - Select a synchronization mode based on your needs:
+1. **Set Source Folder** 📁 - Click the "Select Folder" button and choose the source folder you want to synchronize
+2. **Set Target Folder** 📂 - Choose the destination location for file synchronization
+3. **Choose Sync Mode** 🔄 - Select a synchronization mode based on your needs:
    - Mirror Mode: The target folder will completely replicate the contents of the source folder
    - Incremental Mode: Only adds new files, doesn't delete files in the target folder
    - Delta Mode: Supports delta transfers, only transferring the changed parts of files
-4. **Start Sync** - Click the "Start Sync" button to begin synchronization
+4. **Start Sync** ▶️ - Click the "Start Sync" button to begin synchronization
 
 ### Advanced Configuration
 
@@ -67,7 +65,7 @@ CocoSync features a modern interface design that's simple and intuitive, making 
 
 You can set filter rules to exclude specific files or folders from synchronization:
 
-1. Enter one rule per line in the filter rules text area
+1. Enter one rule per line in the filter rules text area 📝
 2. Use glob patterns like `*.tmp` or `*.bak` to match file types
 3. Folders can be excluded by name, e.g., `node_modules/`
 
@@ -89,8 +87,8 @@ When enabled, CocoSync will maintain historical versions of modified files:
 
 ## ❓ FAQ
 
-### Q: Can I synchronize between different operating systems?
-**A:** Yes! CocoSync handles path differences and file compatibility between Windows, macOS, and Linux.
+### Q: Can I synchronize between different Windows devices?
+**A:** Absolutely! CocoSync makes it easy to synchronize files between different Windows devices, maintaining data consistency.
 
 ### Q: Will CocoSync consume a lot of system resources?
 **A:** No! CocoSync is optimized to use minimal system resources even when monitoring many files.
@@ -103,6 +101,43 @@ When enabled, CocoSync will maintain historical versions of modified files:
 
 ### Q: How can I view synchronization history?
 **A:** The sync log area displays a history of all synchronization operations.
+
+## 🚀 Technology Stack
+
+<div align="center">
+
+### ✨ Powered by These Amazing Technologies ✨
+
+</div>
+
+<div align="center">
+
+[![Electron](https://img.shields.io/badge/⚡%20Electron-34.3.0-47848F?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![Node.js](https://img.shields.io/badge/🟢%20Node.js-Latest-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![JavaScript](https://img.shields.io/badge/💛%20JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+[![Chokidar](https://img.shields.io/badge/👁️%20Chokidar-3.5.3-9B59B6?style=for-the-badge)](https://github.com/paulmillr/chokidar)
+[![FS Extra](https://img.shields.io/badge/📂%20FS%20Extra-11.2.0-2ECC71?style=for-the-badge)](https://github.com/jprichardson/node-fs-extra)
+[![Winston](https://img.shields.io/badge/📝%20Winston-3.11.0-3498DB?style=for-the-badge)](https://github.com/winstonjs/winston)
+
+</div>
+
+<div align="center">
+
+### 🔧 Development Tools 🔧
+
+[![Electron Builder](https://img.shields.io/badge/🏗️%20Electron%20Builder-24.9.1-31A8FF?style=for-the-badge)](https://www.electron.build/)
+[![Jest](https://img.shields.io/badge/🧪%20Jest-29.7.0-C21325?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/)
+
+</div>
+
+<div align="center">
+
+### 💻 Platform Support 💻
+
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)]()
+
+</div>
 
 ## 🛠️ Technical Support
 
