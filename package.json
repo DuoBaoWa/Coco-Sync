@@ -1,6 +1,6 @@
 {
   "name": "coco-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "实时文件夹同步工具",
   "main": "src/main.js",
   "scripts": {
@@ -8,10 +8,8 @@
     "dev": "electron . --dev",
     "test": "jest",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "dist:win": "electron-builder --win",
-    "dist:mac": "electron-builder --mac",
-    "dist:linux": "electron-builder --linux"
+    "dist": "electron-builder --win",
+    "dist:win": "electron-builder --win"
   },
   "keywords": [
     "file-sync",
@@ -50,13 +48,13 @@
       "target": ["nsis"],
       "icon": "assets/tray-icon.png"
     },
-    "mac": {
-      "target": ["dmg"],
-      "icon": "assets/tray-icon.png"
-    },
-    "linux": {
-      "target": ["AppImage", "deb"],
-      "icon": "assets/tray-icon.png"
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CocoSync",
+      "runAfterFinish": true
     }
   }
 }
